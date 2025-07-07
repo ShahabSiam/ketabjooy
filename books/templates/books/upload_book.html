@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>افزودن کتاب | کتاب‌یار</title>
+</head>
+<body>
+    <header class="banner">
+        <h1>📚 کتاب‌یار</h1>
+        <p>افزودن کتاب جدید به مجموعه</p>
+    </header>
+    <nav class="nav-bar">
+        <a href="{% url 'book_list' %}" class="nav-item">خانه</a>
+        <a href="{% url 'upload_book' %}" class="nav-item active">➕ افزودن کتاب</a>
+    </nav>
+    <main class="container">
+        <h2>فرم آپلود کتاب</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn" type="submit">📤 آپلود</button>
+        </form>
+    </main>
+    <footer>
+        <p>© 2025 کتاب‌یار - ساخته‌شده با Django ❤️</p>
+    </footer>
+</body>
+</html>

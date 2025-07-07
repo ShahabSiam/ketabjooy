@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>کتاب‌ جـــوی | دانلود کتاب</title>
+</head>
+<body>
+    <header class="banner">
+        <h1>📚 کتاب جوی</h1>
+        <p>مجموعه‌ای از بهترین کتاب‌های فارسی با دانلود مستقیم PDF</p>
+    </header>
+    <nav class="nav-bar">
+        <a href="{% url 'book_list' %}" class="nav-item">خانه</a>
+        <a href="{% url 'upload_book' %}" class="nav-item">➕ افزودن کتاب</a>
+    </nav>
+    <main class="container">
+        <h2>لیست کتاب‌ها</h2>
+        <div class="grid">
+            {% for book in books %}
+                <div class="card">
+                    {% if book.cover %}
+                        <img src="{{ book.cover.url }}" alt="{{ book.title }}" class="cover">
+                    {% endif %}
+                    <h3>{{ book.title }}</h3>
+                    <p>✍️ {{ book.author }}</p>
+                    <p>🏷️ دسته: {{ book.category }}</p>
+                    <a class="btn" href="{% url 'book_detail' book.id %}">📖 مشاهده جزئیات</a>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 کتاب جــــــــــــــــوی - ساخته‌شده با Django ❤️</p>
+    </footer>
+</body>
+</html>

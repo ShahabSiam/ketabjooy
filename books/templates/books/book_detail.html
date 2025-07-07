@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>{{ book.title }} | کتاب‌یار</title>
+</head>
+<body>
+    <header class="banner">
+        <h1>📖 {{ book.title }}</h1>
+        <p>کتابی از {{ book.author }}</p>
+    </header>
+    <nav class="nav-bar">
+        <a href="{% url 'book_list' %}" class="nav-item">خانه</a>
+        <a href="{% url 'upload_book' %}" class="nav-item">➕ افزودن کتاب</a>
+    </nav>
+    <main class="container">
+        <div class="detail">
+            {% if book.cover %}
+                <img src="{{ book.cover.url }}" alt="{{ book.title }}" class="cover-large">
+            {% endif %}
+            <p><strong>عنوان:</strong> {{ book.title }}</p>
+            <p><strong>نویسنده:</strong> {{ book.author }}</p>
+            <p><strong>دسته:</strong> {{ book.category }}</p>
+            <a class="btn download" href="{{ book.file.url }}" download>⬇️ دانلود فایل PDF</a>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 کتاب‌یار - ساخته‌شده با Django ❤️</p>
+    </footer>
+</body>
+</html>
