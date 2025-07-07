@@ -19,3 +19,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy کل پروژه به داخل کانتینر
 COPY . .
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
